@@ -49,7 +49,7 @@ The input data for this plot is a data frame called Ap_Rain with the following s
     <td></td>
   </tr>
 </table>
-
+<br>
 ```{r}
 Ap_Rain <- read_csv("Ap_Rain.csv", col_types = "Dnnn")
 ```
