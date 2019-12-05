@@ -2,4 +2,4 @@
 * text=auto
 
 * linguist-vendored
-*.R linguist-language=R
+*.scss linguist-language=R
