@@ -166,7 +166,7 @@ break.vec <- c(seq(from = min(df.long$date),
 break.vec
 ```
 
-Now we can use the **scale_x_date** function Set the x-axis labels for every other day starting on the first day of the month.
+Now we can use the **scale_x_date** function to set the x-axis labels for every other day starting on the first day of the month.
 ```{r}
 p <- p + scale_x_date(breaks = break.vec,
                       limits = c(min(df.long$date), max(df.long$date)),

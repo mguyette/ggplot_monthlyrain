@@ -235,7 +235,7 @@ p <- ggplot(data = df.long, aes(x = date,
                                 size = parameter)) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 As you can see, we have a plot prepared with the x and y variables in
 the appropriate place, but there is no geometric object added yet. To
@@ -247,7 +247,7 @@ function.
 p <- p + geom_step() ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 While the plot shows all the lines, the thickness of the lines varies
 considerably. We can change this by using the **scale\_size\_\*** family
@@ -260,7 +260,7 @@ to “none”, we avoid adding a legend indicating the sizes of the lines.
 p <- p + scale_size_manual(values = c(1.6, 1.4, 1.4), guide = "none") ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 The colors and labels for the lines can be changed using the
 **scale\_color\_\*** set of functions. As with the size variable, we can
@@ -274,7 +274,7 @@ p <- p + scale_color_manual(values = c("ET" = "black", "MFWRain" = "blue", "Ph2R
                                       "Rain at NSRA Phase 2")) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 **ggplot2** has built-in themes that allow you to change the non-data
 aspects of the chart. Here we switch to **theme\_bw**, which is a simple
@@ -284,7 +284,7 @@ black and white theme.
 p <- p + theme_bw() ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 We can update the axis labels with the **xlab** and **ylab** functions.
 Here we remove the x label and add a more informative y label.
@@ -295,7 +295,7 @@ p <- p +
     ylab("Rainfall or Evapotranspiration (in)"); p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 We can also add a title with **ggtitle**.
 
@@ -305,7 +305,7 @@ p <- p + ggtitle(paste(month(df.long$date[1], label = T, abbr = F),
                        "Rainfall and Evapotranspiration")) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 The **theme** function is where we can change text elements and design
 components. Here we increase text size for axis labels and titles and
@@ -323,7 +323,7 @@ p <- p + theme(axis.text = element_text(face = "bold", size = 11),
                title = element_text(face = "bold", size = 20)) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 To improve the x-axis labeling, we first create a vector that defines
 the date breaks to span from the beginning to the end of the time series
@@ -340,8 +340,8 @@ break.vec
     ##  [6] "2016-07-11" "2016-07-13" "2016-07-15" "2016-07-17" "2016-07-19"
     ## [11] "2016-07-21" "2016-07-23" "2016-07-25" "2016-07-27" "2016-07-29"
 
-Now we can use the **scale\_x\_date** function Set the x-axis labels for
-every other day starting on the first day of the month.
+Now we can use the **scale\_x\_date** function to set the x-axis labels
+for every other day starting on the first day of the month.
 
 ``` r
 p <- p + scale_x_date(breaks = break.vec,
@@ -350,7 +350,7 @@ p <- p + scale_x_date(breaks = break.vec,
                       labels = date_format("%b %d")) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 Recall that this plot was designed to be reusable from month to month,
 so we want a consistent range displayed on the y-axis. Here we use the
@@ -363,7 +363,7 @@ if we want to show data that goes outside the limits, because the
 p <- p + coord_cartesian(ylim = c(-0.1, 2.1)) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 Lastly, we want to know what the rainfall was when it rained more than 2
 inches. We can do this using another **geometric object**, adding text
@@ -383,7 +383,7 @@ p <- p + geom_text(aes(x = date + 0.5,
                    show.legend = F) ; p
 ```
 
-![](index_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 The finished product is a figure that is shared with land managers
 monthly to help them with decision-making.
